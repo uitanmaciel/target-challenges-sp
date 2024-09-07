@@ -1,6 +1,6 @@
 ﻿namespace Target.Challenges.FirstChallenge;
 
-public class CalculateSum
+public static class CalculateSum
 {
     public static int ValueSum()
     {
