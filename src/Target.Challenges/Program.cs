@@ -35,8 +35,8 @@ Console.WriteLine("Digite um número para verificar se ele pertence a sequência
 var number = int.Parse(Console.ReadLine()!);
 var isFibonacci = FibonacciSequence.IsFibonacci(number);
 Console.WriteLine(isFibonacci 
-  ? "O número informado pertence a sequência de Fibonacci." 
-  : "O número informado não pertence a sequência de Fibonacci.");
+  ? "O número informado pertence a sequência de Fibonacci.\n" 
+  : "O número informado não pertence a sequência de Fibonacci.\n");
 
 /*
 Desafio 03 - Dado um vetor que guarda o valor de faturamento diário de uma distribuidora, faça um programa, que calcule e retorne:
@@ -51,7 +51,7 @@ Challenge 03 - Given an array that stores the daily billing value of a distribut
  */
 
 Console.WriteLine("[Desafio 03] - Calculando o menor, maior faturamento e a média do faturamento mensal...\n");
-var projectDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+var projectDirectory = Directory.GetCurrentDirectory();
 var filePath = Path.Combine(projectDirectory, "ThirdChallenge","data.json");
 var jsonData = File.ReadAllText(filePath);
 var dailyInvoicing = JsonSerializer.Deserialize<IList<Invoicing>>(jsonData);
@@ -103,6 +103,7 @@ Write a program where you calculate the percentage of representation that each s
  
  var revenueShare = new RevenueShare(revenueShares);
  revenueShare.ShowRevenueShare();
+ Console.WriteLine();
  
  /*
 Desafio 05 - Escreva um programa que inverta os caracteres de um string.
@@ -118,7 +119,7 @@ a) This string can be entered through any input of your choice or can be previou
 b) Avoid using ready-made functions, such as reverse;
 */
 
-var value = "charInverted[i] = value[value.Length - 1 - i];";
+var value = "Teste de inversão de string";
 var invertedValue = ReverseString.Reverse(value);
 Console.WriteLine($"Valor original: {value}");
 Console.WriteLine($"Valor invertido: {invertedValue}");
