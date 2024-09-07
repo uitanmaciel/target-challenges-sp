@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Text.Json;
 using Target.Challenges.FirstChallenge;
+using Target.Challenges.FourthChallenge;
 using Target.Challenges.SecondChallenge;
 using Target.Challenges.ThirdChallenge;
 
@@ -48,18 +49,56 @@ Challenge 03 - Given an array that stores the daily billing value of a distribut
  - Number of days in the month where the daily billing value was higher than the monthly average.
  */
 
-Console.WriteLine("[Desafio 03] - Calculando o menor, maior faturamento e a média do faturamento mensal...\n");
-var projectDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
-var filePath = Path.Combine(projectDirectory, "ThirdChallenge","data.json");
-var jsonData = File.ReadAllText(filePath);
-var dailyInvoicing = JsonSerializer.Deserialize<IList<Invoicing>>(jsonData);
-var invoicing = new Invoicing(dailyInvoicing);
-var lowestBilling = invoicing.GetLowestBillingValue();
-var highestBilling = invoicing.GetHighestBillingValue();
-var monthlyAverageBilling = invoicing.GetMonthlyAverageBilling();
-var daysAboveMonthlyAverage = invoicing.GetDaysAboveMonthlyAverage();
+// Console.WriteLine("[Desafio 03] - Calculando o menor, maior faturamento e a média do faturamento mensal...\n");
+// var projectDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+// var filePath = Path.Combine(projectDirectory, "ThirdChallenge","data.json");
+// var jsonData = File.ReadAllText(filePath);
+// var dailyInvoicing = JsonSerializer.Deserialize<IList<Invoicing>>(jsonData);
+// var invoicing = new Invoicing(dailyInvoicing);
+// var lowestBilling = invoicing.GetLowestBillingValue();
+// var highestBilling = invoicing.GetHighestBillingValue();
+// var monthlyAverageBilling = invoicing.GetMonthlyAverageBilling();
+// var daysAboveMonthlyAverage = invoicing.GetDaysAboveMonthlyAverage();
+//
+// Console.WriteLine($"Menor faturamento: R$ {lowestBilling.ToString("C", NumberFormatInfo.CurrentInfo)}");
+// Console.WriteLine($"Maior faturamento: R$ {highestBilling.ToString("C", NumberFormatInfo.CurrentInfo)}");
+// Console.WriteLine($"Média do faturamento mensal: R$ {monthlyAverageBilling}");
+// Console.WriteLine($"Número de dias com faturamento acima da média mensal: {daysAboveMonthlyAverage}\n");
 
-Console.WriteLine($"Menor faturamento: R$ {lowestBilling.ToString("C", NumberFormatInfo.CurrentInfo)}");
-Console.WriteLine($"Maior faturamento: R$ {highestBilling.ToString("C", NumberFormatInfo.CurrentInfo)}");
-Console.WriteLine($"Média do faturamento mensal: R$ {monthlyAverageBilling}");
-Console.WriteLine($"Número de dias com faturamento acima da média mensal: {daysAboveMonthlyAverage}\n");
+/*
+Desafio 04 - Dado o valor de faturamento mensal de uma distribuidora, detalhado por estado:
+ - SP – R$67.836,43
+ - RJ – R$36.678,66
+ - MG – R$29.229,88
+ - ES – R$27.165,48
+ - Outros – R$19.849,53
+
+Escreva um programa onde calcule o percentual de representação que cada estado teve dentro do valor total mensal da distribuidora.
+
+Challenge 04 - Given the monthly billing value of a distributor, detailed by state:
+ - SP - R$ 67,836.43
+ - RJ - R$ 36,678.66
+ - MG - R$ 29,229.88
+ - ES - R$ 27,165.48
+ - Others - R$ 19,849.53
+ 
+Write a program where you calculate the percentage of representation that each state had within the total monthly value of the distributor.
+ */
+ 
+ var spRevenue = 67836.43M;
+ var rjRevenue = 36678.66M;
+ var mgRevenue = 29229.88M;
+ var esRevenue = 27165.48M;
+ var otherRevenue = 19849.53M;
+ 
+ var revenueShares = new List<RevenueShare>
+ {
+     new RevenueShare("SP", spRevenue),
+     new RevenueShare("RJ", rjRevenue),
+     new RevenueShare("MG", mgRevenue),
+     new RevenueShare("ES", esRevenue),
+     new RevenueShare("Outros", otherRevenue)
+ };
+ 
+ var revenueShare = new RevenueShare(revenueShares);
+ revenueShare.ShowRevenueShare();
