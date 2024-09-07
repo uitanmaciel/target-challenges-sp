@@ -1,6 +1,6 @@
 ﻿using Target.Challenges.SecondChallenge;
 
-namespace Target.Challenges.Tests.SecondChallenge;
+namespace Target.Challenges.Tests.SecondChallengeTest;
 
 [TestClass]
 public class FibonacciSequenceTest
